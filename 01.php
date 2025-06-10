@@ -1,4 +1,9 @@
-<?php include 'includes/header.php';
+<?php 
+
+// Forma antigua de crear clases, antes de PHP 8
+
+declare(strict_types= 1);
+include 'includes/header.php';
 
 // 1. Definir una clase
 class Producto {
@@ -6,22 +11,22 @@ class Producto {
     public $nombre;
     public $precio;
     public $disponible;
+
+    public function __construct(string $nombre, int $precio, bool $disponible = false) {
+        $this->nombre = $nombre;
+        $this->precio = $precio;
+        $this->disponible = $disponible;
+    }
 }
 
 // 3. Instanciar nuestra clase
-$producto = new Producto();
-$producto->nombre = 'Tablet';
-$producto->precio = 12;
-$producto->disponible = true;
+$producto = new Producto("Tablet", 12, true);
 
 echo "<pre>";
 var_dump($producto);
 echo "</pre>";
 
-$producto2 = new Producto();
-$producto2->nombre = 'Raton';
-$producto2->precio = 36;
-$producto2->disponible = false;
+$producto2 = new Producto('Raton', 46, true);
 
 echo "<pre>";
 var_dump($producto2);
