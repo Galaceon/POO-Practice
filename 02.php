@@ -4,15 +4,16 @@
 
 declare(strict_types= 1);
 include 'includes/header.php';
-// 1. ENCAPSULACIÓN
+// ENCAPSULACIÓN
 class Producto {
 
     // public - Se puede acceder y modificar en cualquier lugar (clase y objeto)
-    // protected - Se oyede acceder y modificar unicamente en la clase, no el objeto (fuera)
+    // protected - Se puede acceder y modificar unicamente en la clase, no en el objeto (fuera)
     // private - Solo miembros de la misma clase pueden acceder a el
 
 
-    public function __construct(public string $nombre, public int $precio, public bool $disponible = false) {}
+    public function __construct(protected string $nombre, public int $precio, public bool $disponible = false) {
+    }
 
     public function mostrarProducto(): void {
         echo "El producto es " . $this->nombre . " y su precio es de: " . $this->precio;
@@ -31,9 +32,14 @@ class Producto {
 
 // 3. Instanciar nuestra clase
 $producto = new Producto("Tablet", 12, true);
+
+echo "<pre>";
+var_dump($producto);
+echo "</pre>";
 //obtencion (y imprimir por 'echo') el atributo de nombre
 echo $producto->setNombre("Consola");
 echo $producto->getNombre();
+
 
 
 
