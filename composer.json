@@ -1,0 +1,18 @@
+{
+    "name": "anton/introduccion-phpoop",
+    "description": "Aprendiendo namespace y autoload",
+    "authors": [
+        {
+            "name": "Antonio",
+            "email": "anto@gmail.com"
+        }
+    ],
+    "require": {
+        "firebase/php-jwt": "^6.11"
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\" : "./clases"
+        }
+    }
+}

@@ -1,24 +1,23 @@
 <?php include 'includes/header.php';
 // Se recomienda tener una clase por archivo
 
+// Agregamos aqui arriba el app\Detalles junto con un "use" al principio
+// Muy usado en laravel esta forma
+use app\Clientes;
+use app\Detalles;
+
 
 //Incluir las otras clases
 function mi_autoload($class) {
-    require __DIR__ . '/clases/' . $class . '.php';
+    $partes = explode('\\', $class);
+    require __DIR__ . '/clases/' . $partes[1] . '.php';
 }
 spl_autoload_register('mi_autoload');
 
 
-class Clientes {
-    public function __construct() { 
-        echo "Desde 08.php";
-    }
-}
-
-
+// Quitamos app de app\Detalles y lo escribimos arriba
 $detalles = new Detalles();
 $clientes = new Clientes();
-$clientes2 = new Clientes();
 
 include 'includes/footer.php';
 
